@@ -1,0 +1,166 @@
+:root {
+    --dark-red: #9A3F3F;
+    --soft-brown: #C1856D;
+    --beige: #E6CFA9;
+    --pale-yellow: #FBF9D1;
+    --text-dark: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    background-color: var(--pale-yellow);
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 80px; /* for buttons at top */
+}
+
+.container {
+    text-align: center;
+    background: var(--beige);
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+    width: 95%;
+    max-width: 700px;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    color: var(--dark-red);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Side-by-side menu container */
+.menu1 {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* Stack vertically on small screens */
+    justify-content: center;
+}
+
+.medical_record,
+.doctor_twitter {
+    flex: 1;           /* Equal width */
+    min-width: 300px;  /* Avoid shrinking too much */
+    text-align: center;
+    background: var(--beige);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.2);
+    margin-bottom: 2rem;
+}
+
+.medical_record p,
+.doctor_twitter p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.hospital-image,
+.twitter-image {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.btn {
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Medical Record / Twitter Buttons */
+.btn.medical_record-btn,
+.btn.doctor_twitter-btn {
+    background: var(--dark-red);
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    display: inline-block;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.btn.medical_record-btn:hover,
+.btn.doctor_twitter-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+/* Unified Buttons: Home + Language */
+.home-link,
+.lang-switch {
+    position: absolute;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.home-btn,
+.lang-btn {
+    background: var(--soft-brown);
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.home-btn:hover,
+.lang-btn:hover {
+    background: var(--dark-red);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Position */
+.home-link {
+    top: 20px;
+    left: 20px;
+}
+
+.lang-switch {
+    top: 20px;
+    right: 20px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .hospital-image,
+    .twitter-image {
+        max-width: 100%;
+    }
+
+    .home-btn, .lang-btn {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .btn.medical_record-btn,
+    .btn.doctor_twitter-btn {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+}
