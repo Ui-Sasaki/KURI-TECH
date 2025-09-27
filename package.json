@@ -1,0 +1,25 @@
+{
+  "name": "kuri-tech",
+  "version": "1.0.0",
+  "main": "doctor_login.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ui-Sasaki/KURI-TECH.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ui-Sasaki/KURI-TECH/issues"
+  },
+  "homepage": "https://github.com/Ui-Sasaki/KURI-TECH#readme",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0"
+  }
+}

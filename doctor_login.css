@@ -1,0 +1,177 @@
+:root {
+    --dark-red: #9A3F3F;
+    --soft-brown: #C1856D;
+    --beige: #E6CFA9;
+    --pale-yellow: #FBF9D1;
+    --text-dark: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    background-color: var(--pale-yellow);
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background: var(--beige);
+    padding: 5rem 3rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+    width: 95%;
+    max-width: 500px;
+}
+
+h1 {
+    color: var(--dark-red);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.login-form label {
+    font-weight: 600;
+    text-align: left;
+}
+
+.login-form input, .login-form select {
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.login-form select {
+    appearance: none;
+    cursor: pointer;
+    background-color: white;
+    position: relative;
+}
+
+/* Custom arrow for select */
+.select-wrapper {
+    position: relative;
+}
+.select-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--dark-red);
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.btn.login-btn {
+    background: var(--dark-red);
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn.login-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.forgot-password {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--soft-brown);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: var(--dark-red);
+}
+
+.home-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.home-btn {
+    background: var(--soft-brown);
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.home-btn:hover {
+    background: var(--dark-red);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.lang-switch {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.lang-btn {
+    background: var(--soft-brown);
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    background: var(--dark-red);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 600px) {
+    .container {
+        padding: 3rem 2rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .btn.login-btn {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+}

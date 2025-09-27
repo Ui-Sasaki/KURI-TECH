@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KURI⭐︎TECH | Doctors Portal | Login</title>
+    <link rel="stylesheet" href="doctor_login.css">
+</head>
+<body> 
+    <div class="home-link">
+        <a href="index.html" class="btn home-btn">Home</a>
+    </div>
+    <div class="lang-switch">
+        <a href="doctor_signin_en.html" class="lang-btn">English</a>
+        <a href="doctor_signin_jp.html" class="lang-btn">日本語</a>
+    </div>
+
+    <div class="container">
+        <h1>Login</h1>
+        <form action="/submit_doctor_login" method="POST" class="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="hospital_id">Hospital:</label>
+            <div class="select-wrapper">
+                <select id="hospital_id" name="hospital_id" required>
+                    <option value="">Loading hospitals...</option>
+                </select>
+            </div>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit" class="btn login-btn">Login</button>
+        </form>
+        <a href="doctor_forgot_password.html" class="forgot-password">Forgot Password?</a>
+    </div>
+
+    <!-- Link to external JS -->
+    <script src="doctor_login.js"></script>
+</body>
+</html>
