@@ -49,7 +49,8 @@ h1 {
     text-align: left;
 }
 
-.login-form input, .login-form select {
+.login-form input,
+.login-form select {
     padding: 0.8rem 1rem;
     border-radius: 12px;
     border: 1px solid #ccc;
@@ -82,6 +83,7 @@ h1 {
     pointer-events: none;
 }
 
+/* Login button */
 .btn.login-btn {
     background: var(--dark-red);
     color: white;
@@ -99,18 +101,28 @@ h1 {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
 }
 
-.forgot-password {
+/* Or Sign In button (styled link) */
+/* Or Sign In link as plain text */
+.btn.signin-btn {
     display: inline-block;
+    background: none;          /* remove button background */
+    color: var(--dark-red);    /* text color */
+    padding: 0;                /* no padding */
+    font-size: 1rem;           /* normal text size */
+    font-weight: 600;          /* slightly bold */
+    border: none;              /* remove border */
+    border-radius: 0;          /* remove rounding */
+    cursor: pointer;
+    text-decoration: underline; /* optional: underline on hover */
     margin-top: 1rem;
-    color: var(--soft-brown);
-    text-decoration: none;
-    font-weight: 600;
     transition: color 0.3s ease;
 }
 
-.forgot-password:hover {
-    color: var(--dark-red);
+.btn.signin-btn:hover {
+    color: var(--soft-brown); /* change color on hover */
+    text-decoration: none;     /* optional: remove underline on hover */
 }
+
 
 .home-link {
     position: absolute;
@@ -132,7 +144,7 @@ h1 {
 }
 
 .home-btn:hover {
-    background: var(--dark-red);
+    background: var(--beige);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -161,6 +173,7 @@ h1 {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 @media (max-width: 600px) {
     .container {
         padding: 3rem 2rem;
@@ -170,7 +183,8 @@ h1 {
         font-size: 2rem;
     }
 
-    .btn.login-btn {
+    .btn.login-btn,
+    .btn.signin-btn {
         font-size: 1rem;
         padding: 0.8rem 1.5rem;
     }
