@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <title>KURI⭐︎TECH | Doctors Portal | Login</title>
+    <link rel="stylesheet" href="doctor_login.css">
+</head>
+<body> 
+    <div class="home-link">
+        <a href="index.html" class="btn home-btn">Home</a>
+    </div>
+    <div class="lang-switch">
+        <a href="doctor_login.html" class="lang-btn">English</a>
+        <a href="doctor_login_jp.html" class="lang-btn">日本語</a>
+    </div>
+
+    <div class="container">
+        <h1>医者ログイン</h1>
+        <form action="doctor.html" method="GET" class="login-form">
+            <label for="username">ユーザーネーム:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="hospital_id">病院:</label>
+            <div class="select-wrapper">
+                <select id="hospital_id" name="hospital_id" required>
+                    <option value="">病院検索中...</option>
+                </select>
+            </div>
+
+            <label for="password">パスワード:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit" class="btn login-btn">ログイン</button>
+        </form>
+        <a href="doctor_signin.html" class="btn signin-btn">またはサインイン</a>
+    </div>
+
+    <!-- Link to external JS -->
+    <script src="doctor_login.js"></script>
+</body>
+</html>
