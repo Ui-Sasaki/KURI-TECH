@@ -28,9 +28,50 @@
 
             <button type="submit" class="btn login-btn">ログイン</button>
         </form>
-        <a href="doctor_signin.html" class="btn signin-btn">またはサインイン</a>
+        <a href="patient_signin.html" class="btn signin-btn">またはサインイン</a>
     </div>
 
-    <script src="patient_login.js"></script>
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+    import { getFirestore, getDoc, doc } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBBFtkw6ZUj8AvMHgwKSh2MyDhrAPtJIHk",
+      authDomain: "kuri-tech.firebaseapp.com",
+      projectId: "kuri-tech",
+      storageBucket: "kuri-tech.firebasestorage.app",
+      messagingSenderId: "1084570791787",
+      appId: "1:1084570791787:web:7bd34da963f12ae69b662e",
+      measurementId: "G-F68BPB6943"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    document.querySelector(".login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        
+        const snap = await getDoc(doc(db, "patients", user.uid));
+        if (!snap.exists() || snap.data().role !== "patient") {
+          await signOut(auth);
+          alert("患者ポータルのアクセス権がありません。");
+          return;
+        }
+
+        alert("ログイン成功！");
+        window.location.href = "patient_dashboard_jp.html";
+      } catch (err) {
+        alert("ログイン失敗: " + err.message);
+      }
+    });
+  </script>
 </body>
 </html>

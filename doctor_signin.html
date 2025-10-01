@@ -1,1 +1,110 @@
-<h1>Not Involved in Prototype</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <title>KURI⭐︎TECH | Doctors Portal | Sign In</title>
+  <link rel="stylesheet" href="doctor_signin.css">
+</head>
+<body>
+  <div class="home-link">
+    <a href="index.html" class="btn home-btn">Home</a>
+  </div>
+
+  <div class="lang-switch">
+    <a href="doctor_signin.html" class="lang-btn">English</a>
+    <a href="doctor_signin_jp.html" class="lang-btn">日本語</a>
+  </div>
+
+  <div class="container">
+    <h1>Doctor Sign In</h1>
+    <form class="signin-form">
+      <label for="full_name">Name:</label>
+      <input type="text" id="full_name" name="full_name" required>
+
+      <label for="hospital_id">Hospital:</label>
+      <div class="select-wrapper">
+        <select id="hospital_id" name="hospital_id" required>
+          <option value="">Loading hospitals...</option>
+        </select>
+      </div>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit" class="btn signin-btn">Create Account</button>
+    </form>
+
+    <a href="doctor_login.html" class="btn login-btn">Already have an account? Login</a>
+  </div>
+
+  <script>
+    fetch('/hospitals')
+      .then(res => res.json())
+      .then(data => {
+        const select = document.getElementById('hospital_id');
+        select.innerHTML = '<option value="">Select Hospital</option>';
+        data.forEach(h => {
+          const option = document.createElement('option');
+          option.value = h.id;
+          option.textContent = h.name;
+          select.appendChild(option);
+        });
+      })
+      .catch(err => console.error('Failed to load hospitals:', err));
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+    import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBBFtkw6ZUj8AvMHgwKSh2MyDhrAPtJIHk",
+      authDomain: "kuri-tech.firebaseapp.com",
+      projectId: "kuri-tech",
+      storageBucket: "kuri-tech.appspot.com",
+      messagingSenderId: "1084570791787",
+      appId: "1:1084570791787:web:7bd34da963f12ae69b662e",
+      measurementId: "G-F68BPB6943"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    document.querySelector(".signin-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const fullName = document.getElementById("full_name").value;
+      const hospital = document.getElementById("hospital_id").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        await setDoc(doc(db, "doctors", user.uid), {
+          fullName,
+          hospital,
+          email,
+          role: "doctor", 
+          createdAt: new Date()
+        });
+
+        alert("Account created successfully! Please login.");
+        window.location.href = "doctor_login.html";
+      } catch (err) {
+        console.error(err);
+        alert("Error: " + err.message);
+      }
+    });
+  </script>
+</body>
+</html>
