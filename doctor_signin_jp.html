@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <title>KURI⭐︎TECH | 医者ポータル | サインイン</title>
+  <link rel="stylesheet" href="doctor_signin.css">
+</head>
+<body>
+  <div class="home-link">
+    <a href="index_jp.html" class="btn home-btn">ホーム</a>
+  </div>
+
+  <div class="lang-switch">
+    <a href="doctor_signin.html" class="lang-btn">English</a>
+    <a href="doctor_signin_jp.html" class="lang-btn">日本語</a>
+  </div>
+
+  <div class="container">
+    <h1>医者サインイン</h1>
+    <form class="signin-form">
+      <label for="full_name">氏名:</label>
+      <input type="text" id="full_name" name="full_name" required>
+
+      <label for="hospital_id">病院:</label>
+      <div class="select-wrapper">
+        <select id="hospital_id" name="hospital_id" required>
+          <option value="">病院検索中...</option>
+        </select>
+      </div>
+
+      <label for="email">メールアドレス:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">パスワード:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit" class="btn signin-btn">アカウント作成</button>
+    </form>
+
+    <a href="doctor_login_jp.html" class="btn login-btn">すでにアカウントがありますか？ ログイン</a>
+  </div>
+
+  <script>
+    fetch('/hospitals')
+      .then(res => res.json())
+      .then(data => {
+        const select = document.getElementById('hospital_id');
+        select.innerHTML = '<option value="">病院を選択</option>';
+        data.forEach(h => {
+          const option = document.createElement('option');
+          option.value = h.id;
+          option.textContent = h.name;
+          select.appendChild(option);
+        });
+      })
+      .catch(err => console.error('病院リストを取得できませんでした:', err));
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+    import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBBFtkw6ZUj8AvMHgwKSh2MyDhrAPtJIHk",
+      authDomain: "kuri-tech.firebaseapp.com",
+      projectId: "kuri-tech",
+      storageBucket: "kuri-tech.appspot.com",
+      messagingSenderId: "1084570791787",
+      appId: "1:1084570791787:web:7bd34da963f12ae69b662e",
+      measurementId: "G-F68BPB6943"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    document.querySelector(".signin-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const fullName = document.getElementById("full_name").value;
+      const hospital = document.getElementById("hospital_id").value;
+      const email = document.getElementById("email").value;
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        await setDoc(doc(db, "doctors", user.uid), {
+          fullName,
+          hospital,
+          username,
+          email,
+          createdAt: new Date()
+        });
+
+        alert("アカウントが作成されました！");
+        window.location.href = "doctor_login_jp.html";
+      } catch (err) {
+        console.error(err);
+        alert("エラー: " + err.message);
+      }
+    });
+  </script>
+</body>
+</html>
