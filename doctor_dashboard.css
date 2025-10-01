@@ -24,49 +24,55 @@ body {
 .navbar {
   background: var(--dark-red);
   color: white;
-  padding: 1rem 2rem;
+  padding: 0.8rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .navbar .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 1.2rem;
+  gap: 12px;
+  font-size: 1.3rem;
   font-weight: 700;
 }
 
 .navbar .logo img {
-  height: 40px;
-  border-radius: 8px;
+  height: 38px;
+  border-radius: 6px;
 }
 
 .nav-links {
   display: flex;
-  gap: 0.7rem;
+  gap: 0.8rem;
 }
 
 .small-btn {
   background: var(--soft-brown);
   color: white;
-  padding: 0.4rem 0.9rem;
+  padding: 0.45rem 1rem;
   border-radius: 6px;
   font-size: 0.85rem;
   font-weight: 600;
   text-decoration: none;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
 }
 
 .small-btn:hover {
   background: var(--beige);
   color: var(--dark-red);
+  transform: translateY(-2px);
 }
 
 .logout {
-  background: #555;
+  background: #444;
 }
 
 .logout:hover {
@@ -76,12 +82,13 @@ body {
 
 .welcome {
   text-align: center;
-  margin: 2rem auto;
+  margin: 3rem auto 2rem;
+  padding: 0 1rem;
   max-width: 700px;
 }
 
 .welcome h1 {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   color: var(--dark-red);
   margin-bottom: 0.5rem;
 }
@@ -103,20 +110,34 @@ body {
 
 .card {
   background: var(--beige);
-  border-radius: 20px;
+  border-radius: 18px;
   padding: 1.5rem;
   text-align: center;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
+.card-link {
+  text-decoration: none;  
+  color: inherit;         
+  display: block;        
+  cursor: pointer;      
+}
+
+.card-link:hover .card {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
 
 .card:hover {
   transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
 }
 
 .card img {
   width: 100%;
-  max-height: 180px;
+  max-height: 300px;
   object-fit: cover;
   border-radius: 12px;
   margin-bottom: 1rem;
@@ -124,6 +145,7 @@ body {
 
 .card h2 {
   color: var(--dark-red);
+  font-size: 1.4rem;
   margin-bottom: 0.5rem;
 }
 
@@ -131,19 +153,35 @@ body {
   font-size: 1rem;
   margin-bottom: 1rem;
   color: var(--text-dark);
+  line-height: 1.4;
 }
 
 .card .btn {
   background: var(--dark-red);
   color: white;
-  padding: 0.7rem 1.5rem;
+  padding: 0.65rem 1.3rem;
   border-radius: 10px;
   font-weight: 600;
   text-decoration: none;
-  transition: 0.3s;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  display: inline-block;
 }
 
 .card .btn:hover {
   background: var(--soft-brown);
   transform: translateY(-2px);
 }
+
+@media (max-width: 768px) {
+  .welcome h1 {
+    font-size: 2rem;
+  }
+  .welcome p {
+    font-size: 1rem;
+  }
+  .card h2 {
+    font-size: 1.2rem;
+  }
+}
+
