@@ -60,7 +60,7 @@ body {
   font-size: 0.85rem;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
   border: none;
   cursor: pointer;
 }
@@ -98,14 +98,28 @@ body {
   color: var(--soft-brown);
 }
 
-.dashboard {
+
+.dashboard-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 2fr 1fr; 
   gap: 2rem;
   padding: 2rem;
-  width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: auto;
+  align-items: start;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
 }
 
 .card {
@@ -117,19 +131,6 @@ body {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.card-link {
-  text-decoration: none;  
-  color: inherit;         
-  display: block;        
-  cursor: pointer;      
-}
-
-.card-link:hover .card {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-}
-
-
 .card:hover {
   transform: translateY(-6px);
   box-shadow: 0 8px 18px rgba(0,0,0,0.25);
@@ -137,7 +138,7 @@ body {
 
 .card img {
   width: 100%;
-  max-height: 300px;
+  max-height: 220px;
   object-fit: cover;
   border-radius: 12px;
   margin-bottom: 1rem;
@@ -156,31 +157,59 @@ body {
   line-height: 1.4;
 }
 
-.card .btn {
-  background: var(--dark-red);
-  color: white;
-  padding: 0.65rem 1.3rem;
+.ads {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ads-title {
+  font-size: 1.2rem;
+  color: var(--dark-red);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.ad-box {
+  background: var(--beige);
+  border-radius: 14px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.25s ease;
+}
+
+.ad-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+.ad-box img {
+  width: 100%;
   border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.ad-box p {
+  font-size: 0.9rem;
+  color: var(--dark-red);
   font-weight: 600;
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  display: inline-block;
 }
 
-.card .btn:hover {
-  background: var(--soft-brown);
-  transform: translateY(-2px);
-}
-
-@media (max-width: 768px) {
-  .welcome h1 {
-    font-size: 2rem;
+@media (max-width: 992px) {
+  .dashboard-container {
+    grid-template-columns: 1fr; 
   }
-  .welcome p {
-    font-size: 1rem;
+  .dashboard {
+    grid-template-columns: 1fr;
   }
-  .card h2 {
-    font-size: 1.2rem;
+  .ads {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .ad-box {
+    width: 45%;
   }
 }
