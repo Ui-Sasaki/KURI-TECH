@@ -39,6 +39,30 @@ body {
   transform: translateY(20%); 
 }
 
+.about {
+  position: absolute;
+  top: 20px;
+  left: 20px; /* move to left corner */
+  z-index: 10;
+}
+
+.about-btn {
+  background: var(--soft-brown);
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.about-btn:hover {
+  background: var(--dark-red);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
 .lang-switch {
   position: absolute;
   top: 20px;

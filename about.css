@@ -1,0 +1,165 @@
+:root {
+    --dark-red: #9A3F3F;
+    --soft-brown: #C1856D;
+    --beige: #E6CFA9;
+    --pale-yellow: #FBF9D1;
+    --text-dark: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    background: var(--pale-yellow);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Navbar --- */
+.navbar {
+    background: var(--dark-red);
+    color: white;
+    padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.navbar .logo img {
+    height: 38px;
+    border-radius: 6px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.small-btn {
+    background: var(--soft-brown);
+    color: white;
+    padding: 0.45rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.small-btn:hover {
+    background: var(--beige);
+    color: var(--dark-red);
+    transform: translateY(-2px);
+}
+
+.logout {
+    background: #444;
+}
+
+.logout:hover {
+    background: #222;
+    color: white;
+}
+
+/* --- Main Content --- */
+main {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1000px;
+    margin: auto;
+}
+
+main h1 {
+    font-size: 2.5rem;
+    color: var(--dark-red);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+main h2 {
+    font-size: 2rem;
+    color: var(--soft-brown);
+    margin: 2rem 0 1rem;
+    text-align: center;
+}
+
+main p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* --- Member Cards Responsive Layout --- */
+.members-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem 0;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.Information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--beige);
+    border-radius: 20px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.Information:hover {
+    transform: translateY(-5px);
+}
+
+.Information img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.Information h4 {
+    color: var(--dark-red);
+    margin-bottom: 0.3rem;
+}
+
+.Information p {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+/* --- Footer --- */
+footer {
+    padding: 2rem;
+    text-align: center;
+}
+
+footer .instagram {
+    width: 120px;
+    height: auto;
+}
