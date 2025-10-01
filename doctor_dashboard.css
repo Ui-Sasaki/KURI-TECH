@@ -1,0 +1,149 @@
+:root {
+  --dark-red: #9A3F3F;
+  --soft-brown: #C1856D;
+  --beige: #E6CFA9;
+  --pale-yellow: #FBF9D1;
+  --text-dark: #333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  background: var(--pale-yellow);
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background: var(--dark-red);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.navbar .logo img {
+  height: 40px;
+  border-radius: 8px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.small-btn {
+  background: var(--soft-brown);
+  color: white;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.small-btn:hover {
+  background: var(--beige);
+  color: var(--dark-red);
+}
+
+.logout {
+  background: #555;
+}
+
+.logout:hover {
+  background: #222;
+  color: white;
+}
+
+.welcome {
+  text-align: center;
+  margin: 2rem auto;
+  max-width: 700px;
+}
+
+.welcome h1 {
+  font-size: 2.5rem;
+  color: var(--dark-red);
+  margin-bottom: 0.5rem;
+}
+
+.welcome p {
+  font-size: 1.2rem;
+  color: var(--soft-brown);
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.card {
+  background: var(--beige);
+  border-radius: 20px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.card h2 {
+  color: var(--dark-red);
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+.card .btn {
+  background: var(--dark-red);
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.card .btn:hover {
+  background: var(--soft-brown);
+  transform: translateY(-2px);
+}

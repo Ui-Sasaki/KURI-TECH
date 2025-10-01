@@ -12,42 +12,45 @@
   box-sizing: border-box;
 }
 
-
 body {
   font-family: 'Inter', 'Noto Sans JP', sans-serif;
   background-color: var(--pale-yellow);
   color: var(--text-dark);
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   min-height: 100vh;
-  position: relative;
+  flex-direction: column;
 }
 
-/* Logo */
-.logo-container {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  z-index: 2;
+.home-link {
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
 
-.logo {
-  height: 250px;
-  width: auto;
-  border-radius: 20px;
-  transform: translateY(50%); /* Move down to overlap container by 1/3 */
+.home-btn {
+  background: var(--soft-brown);
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
-/* Language buttons */
+.home-btn:hover {
+  background: var(--dark-red);
+  transform: translateY(-2px);
+}
+
 .lang-switch {
   position: absolute;
   top: 20px;
   right: 20px;
   display: flex;
   gap: 0.5rem;
-  z-index: 3;
 }
 
 .lang-btn {
@@ -64,91 +67,78 @@ body {
 .lang-btn:hover {
   background: var(--dark-red);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-
 .container {
-  position: relative;
   background: var(--beige);
-  padding: 9rem 4rem 4rem 4rem; /* extra top padding for overlap */
+  padding: 3rem 2.5rem;
   border-radius: 20px;
   box-shadow: 0 8px 22px rgba(0,0,0,0.2);
   width: 95%;
-  max-width: 1200px;
-  margin-top: -10px; /* pulls container up to overlap logo */
+  max-width: 500px;
   text-align: center;
-  z-index: 1;
 }
 
-/* Heading */
 h1 {
   color: var(--dark-red);
-  font-size: 2.8rem;
-  margin-bottom: 1rem;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
 }
 
-h1 span {
-  font-weight: 800;
-}
-
-.subtitle {
-  margin-bottom: 3rem;
-  font-size: 1.4rem;
-  color: var(--soft-brown);
-}
-
-
-.role-buttons {
+.signin-form {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+input {
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
 }
 
 .btn {
   display: inline-block;
   text-decoration: none;
   color: white;
-  padding: 1.5rem 3rem;
-  border-radius: 16px;
-  font-size: 1.4rem;
+  padding: 0.9rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
   font-weight: 700;
   transition: all 0.3s ease;
-  min-width: 250px;
+  margin-top: 1rem;
   text-align: center;
 }
 
-.doctor-btn {
+.signin-btn {
   background: var(--dark-red);
 }
 
-.patient-btn {
+.login-btn {
   background: var(--soft-brown);
+  display: block;
+  margin: 1rem auto 0;
 }
 
 .btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
 }
-
 
 @media (max-width: 600px) {
   h1 {
-      font-size: 2rem;
+    font-size: 1.8rem;
   }
-
   .btn {
-      font-size: 1rem;
-      padding: 1rem 2rem;
-  }
-
-  .subtitle {
-      font-size: 1.1rem;
-  }
-
-  .logo {
-      height: 150px;
-      transform: translateY(30%);
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
   }
 }
