@@ -20,7 +20,7 @@
     <div class="container">
         <h1>患者ログイン</h1>
         <form action="patient.html" method="GET" class="login-form">
-            <label for="username">ユーザーネーム</label>
+            <label for="username">メールアドレス:</label>
             <input type="text" id="username" name="username" required>
 
             <label for="password">パスワード:</label>
@@ -58,7 +58,7 @@
       try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-        
+
         const snap = await getDoc(doc(db, "patients", user.uid));
         if (!snap.exists() || snap.data().role !== "patient") {
           await signOut(auth);

@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="doctor_twitter.css">
 </head>
 <body>
+  <!-- Top Navbar -->
   <header class="navbar">
     <div class="logo">
       <img src="images/logo.png" alt="KURI⭐︎TECH Logo">
@@ -16,7 +17,7 @@
       <a href="doctor_dashboard.html" class="btn small-btn">Home</a>
       <a href="doctor_twitter.html" class="btn small-btn">English</a>
       <a href="doctor_twitter_jp.html" class="btn small-btn">日本語</a>
-      <a href="index.html" class="btn small-btn logout">Logout</a>
+       <a href="index.html" class="btn small-btn logout">ログアウト</a>
     </nav>
   </header>
 
@@ -27,37 +28,33 @@
     </div>
 
     <section class="composer">
-      <label for="tweetText" class="small">New Post (Under 280 Words)</label>
-      <textarea id="tweetText" maxlength="280" placeholder="Write Here.."></textarea>
+      <label for="tweetText" class="small">新規投稿 (280文字以内)</label>
+      <textarea id="tweetText" maxlength="280" placeholder="投稿"></textarea>
 
       <div class="composer-row">
         <div class="controls">
           <input type="file" id="imageInput" accept="image/*" style="display:none">
-          <button class="btn" id="attachBtn">Insert Photo</button>
-          <button class="btn" id="clearBtn">Clear</button>
+          <button class="btn" id="attachBtn">画像を添付</button>
+          <button class="btn" id="clearBtn">クリア</button>
         </div>
         <div class="composer-actions">
           <div class="char-count" id="charCount">0/280</div>
-          <button class="btn primary" id="postBtn">Post</button>
+          <button class="btn primary" id="postBtn">投稿</button>
         </div>
       </div>
 
       <img id="imgPreview" class="img-preview" style="display:none;" alt="Image Preview">
     </section>
 
+    <!-- ✅ FIX: Added id="timeline" -->
     <section id="timeline" class="timeline">
-      <p class="placeholder">There are no posts yet.</p>
+      <p class="placeholder">まだ投稿がありません。</p>
     </section>
 
     <footer>
       <p>© 2025 KURI⭐︎TECH | Doctor Portal</p>
     </footer>
   </main>
-
-  <script type="module" src="doctor_twitter.js"></script>
-</body>
-</html>
-
 
   <script type="module" src="doctor_twitter.js"></script>
 </body>
