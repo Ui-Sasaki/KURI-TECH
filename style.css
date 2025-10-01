@@ -12,7 +12,6 @@
   box-sizing: border-box;
 }
 
-/* Body */
 body {
   font-family: 'Inter', 'Noto Sans JP', sans-serif;
   background-color: var(--pale-yellow);
@@ -24,7 +23,6 @@ body {
   position: relative;
 }
 
-/* Logo */
 .logo-container {
   position: relative;
   width: 100%;
@@ -37,10 +35,9 @@ body {
   height: 250px;
   width: auto;
   border-radius: 20px;
-  transform: translateY(50%); /* Move down to overlap container by 1/3 */
+  transform: translateY(20%); 
 }
 
-/* Language buttons */
 .lang-switch {
   position: absolute;
   top: 20px;
@@ -71,17 +68,16 @@ body {
 .container {
   position: relative;
   background: var(--beige);
-  padding: 9rem 4rem 4rem 4rem; /* extra top padding for overlap */
+  padding: 9rem 4rem 4rem 4rem; 
   border-radius: 20px;
   box-shadow: 0 8px 22px rgba(0,0,0,0.2);
   width: 95%;
   max-width: 1200px;
-  margin-top: -10px; /* pulls container up to overlap logo */
+  margin-top: -60px;
   text-align: center;
   z-index: 1;
 }
 
-/* Heading */
 h1 {
   color: var(--dark-red);
   font-size: 2.8rem;
