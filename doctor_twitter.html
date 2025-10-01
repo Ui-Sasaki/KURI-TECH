@@ -7,50 +7,57 @@
   <link rel="stylesheet" href="doctor_twitter.css">
 </head>
 <body>
-  <!-- Logo -->
-  <div class="logo-vertical">
-      <img src="images/logo.png" alt="KURI⭐︎TECH Logo" class="kuri_tech_logo">
+  <header class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="KURI⭐︎TECH Logo">
       <span>KURI⭐︎TECH | Doctor Portal</span>
-  </div>
-
-  <!-- Navbar -->
-  <nav class="nav-links-vertical">
+    </div>
+    <nav class="nav-links">
       <a href="doctor_dashboard.html" class="btn small-btn">Home</a>
       <a href="doctor_twitter.html" class="btn small-btn">English</a>
       <a href="doctor_twitter_jp.html" class="btn small-btn">日本語</a>
-      <button id="logoutBtn" class="btn small-btn logout">Logout</button>
-  </nav>
+      <a href="index.html" class="btn small-btn logout">Logout</a>
+    </nav>
+  </header>
 
-  <!-- App -->
-  <div class="app">
-      <header>
-          <img src="images/logo.png" class="logo" alt="KURI⭐︎TECH Logo" id="witdoc_logo">
-          <h1>Wit Doc</h1>
-      </header>
+  <main class="app">
+    <div class="app-header">
+      <img src="images/logo.png" id="witdoc_logo" alt="Wit Doc Logo">
+      <h1>Wit Doc</h1>
+    </div>
 
-      <section class="composer" id="composer">
-          <label for="tweetText" class="small">新規投稿 (280文字以内)</label>
-          <textarea id="tweetText" maxlength="280" placeholder="投稿"></textarea>
+    <section class="composer">
+      <label for="tweetText" class="small">New Post (Under 280 Words)</label>
+      <textarea id="tweetText" maxlength="280" placeholder="Write Here.."></textarea>
 
-          <div class="composer-row">
-              <div class="controls">
-                  <input type="file" id="imageInput" accept="image/*" style="display:none">
-                  <button class="btn" id="attachBtn">画像を添付</button>
-                  <button class="btn" id="clearBtn">クリア</button>
-              </div>
-              <div style="display:flex;align-items:center;gap:10px">
-                  <div class="char-count" id="charCount">0/280</div>
-                  <button class="btn primary" id="postBtn">投稿</button>
-              </div>
-          </div>
+      <div class="composer-row">
+        <div class="controls">
+          <input type="file" id="imageInput" accept="image/*" style="display:none">
+          <button class="btn" id="attachBtn">Insert Photo</button>
+          <button class="btn" id="clearBtn">Clear</button>
+        </div>
+        <div class="composer-actions">
+          <div class="char-count" id="charCount">0/280</div>
+          <button class="btn primary" id="postBtn">Post</button>
+        </div>
+      </div>
 
-          <img id="imgPreview" class="img-preview" style="display:none; max-width:100%; margin-top:8px;" alt="Image Preview">
-      </section>
+      <img id="imgPreview" class="img-preview" style="display:none;" alt="Image Preview">
+    </section>
 
-      <section class="timeline" id="timeline"></section>
+    <section id="timeline" class="timeline">
+      <p class="placeholder">There are no posts yet.</p>
+    </section>
 
-      <footer>ういこれファイアベースでなんかしてくれる？</footer>
-  </div>
+    <footer>
+      <p>© 2025 KURI⭐︎TECH | Doctor Portal</p>
+    </footer>
+  </main>
+
+  <script type="module" src="doctor_twitter.js"></script>
+</body>
+</html>
+
 
   <script type="module" src="doctor_twitter.js"></script>
 </body>
