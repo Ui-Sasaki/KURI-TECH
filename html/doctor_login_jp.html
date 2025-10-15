@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../images/logo.png">
+  <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+  <title>KURI⭐︎TECH | 医者ポータル | ログイン</title>
+  <link rel="stylesheet" href="../css/doctor_login.css">
+</head>
+<body> 
+  <div class="home-link">
+    <a href="index_jp.html" class="btn home-btn">ホーム</a>
+  </div>
+
+  <div class="lang-switch">
+    <a href="doctor_login.html" class="lang-btn">English</a>
+    <a href="doctor_login_jp.html" class="lang-btn">日本語</a>
+  </div>
+
+  <div class="container">
+    <h1>医者ログイン</h1>
+    <form class="login-form">
+      <label for="username">メールアドレス:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">パスワード:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit" class="btn login-btn">ログイン</button>
+    </form>
+
+    <a href="doctor_signin_jp.html" class="btn signin-btn">アカウント作成</a>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+    import { getFirestore, getDoc, doc } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBBFtkw6ZUj8AvMHgwKSh2MyDhrAPtJIHk",
+      authDomain: "kuri-tech.firebaseapp.com",
+      projectId: "kuri-tech",
+      storageBucket: "kuri-tech.appspot.com",
+      messagingSenderId: "1084570791787",
+      appId: "1:1084570791787:web:7bd34da963f12ae69b662e",
+      measurementId: "G-F68BPB6943"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    document.querySelector(".login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        const snap = await getDoc(doc(db, "doctors", user.uid));
+        if (!snap.exists() || snap.data().role !== "doctor") {
+          await signOut(auth);
+          alert("医者ポータルのアクセス権がありません。");
+          return;
+        }
+
+        alert("ログイン成功！");
+        window.location.href = "doctor_dashboard.html";
+      } catch (err) {
+        alert("ログイン失敗: " + err.message);
+      }
+    });
+  </script>
+</body>
+</html>

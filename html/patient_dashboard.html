@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../images/logo.png">
+  <link rel="shortcut icon" href="../images/favicon.ico" type="../image/x-icon">
+  <title>KURI⭐︎TECH | Patient Dashboard</title>
+  <link rel="stylesheet" href="../css/patient_dashboard.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="../images/logo.png" alt="KURI⭐︎TECH Logo">
+      <span>KURI⭐︎TECH | Patient Portal</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index_en.html" class="btn small-btn">Home</a>
+      <a href="patient_dashboard.html" class="btn small-btn">English</a>
+      <a href="patient_dashboard_jp.html" class="btn small-btn">日本語</a>
+      <button id="logoutBtn" class="btn small-btn logout">Logout</button>
+    </nav>
+  </header>
+
+  <section class="welcome">
+    <h1>Welcome!</h1>
+    <p>Select a service below to continue.</p>
+  </section>
+
+  <main class="dashboard-container">
+    <section class="dashboard">
+      <a href="hospital_search.html" class="card-link">
+        <div class="card">
+          <img src="../images/hospital.jpg" alt="Hospital Search">
+          <h2>Hospital Search + 予約</h2>
+          <p>Find hospitals, check availability, and book appointments.</p>
+        </div>
+      </a>
+
+      <a href="ai_chat.html" class="card-link">
+        <div class="card">
+          <img src="../images/ai_chat.jpg" alt="AI Chat">
+          <h2>AI Medical Chat</h2>
+          <p>Ask about symptoms, get rehab advice, and track health.</p>
+        </div>
+      </a>
+
+      <a href="patient_data.html" class="card-link">
+        <div class="card">
+          <img src="../images/health_data.jpg" alt="Health Data">
+          <h2>My Health Data</h2>
+          <p>View your medical history and share securely with doctors.</p>
+        </div>
+      </a>
+    </section>
+
+    <aside class="ads">
+      <h2 class="ads-title">Sponsored</h2>
+      <div class="ad-box">
+        <img src="../images/ad1.jpg" alt="Ad 1">
+        <p>Health Supplements</p>
+      </div>
+      <div class="ad-box">
+        <img src="../images/ad2.jpg" alt="Ad 2">
+        <p>Online Rehab Program</p>
+      </div>
+    </aside>
+  </main>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBBFtkw6ZUj8AvMHgwKSh2MyDhrAPtJIHk",
+      authDomain: "kuri-tech.firebaseapp.com",
+      projectId: "kuri-tech",
+      storageBucket: "kuri-tech.firebasestorage.app",
+      messagingSenderId: "1084570791787",
+      appId: "1:1084570791787:web:7bd34da963f12ae69b662e",
+      measurementId: "G-F68BPB6943"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        window.location.href = "patient_login.html";
+      }
+    });
+
+    document.getElementById("logoutBtn").addEventListener("click", async () => {
+      await signOut(auth);
+      window.location.href = "patient_login.html";
+    });
+  </script>
+</body>
+</html>

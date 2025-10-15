@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KURI⭐︎TECH | Doctors Portal | AI Chat</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="ai_chat.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <img src="images/logo.png" alt="KURI⭐︎TECH Logo">
+            <span>KURI⭐︎TECH | About</span>
+        </div>
+        <nav class="nav-links">
+            <a href="doctor_dashboard.html" class="btn small-btn">Home</a>
+            <a href="ai_chat.html" class="btn small-btn">English</a>
+            <a href="ai_chat_jp.html" class="btn small-btn">日本語</a>
+            <button id="logoutBtn" class="btn small-btn logout">Logout</button>
+        </nav>
+    </header>
+
+    <!-- Chat Container -->
+    <div class="chat-container">
+        <div class="messages" id="messages"></div>
+        <div class="input-container">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="ai_chat.js"></script>
+</body>
+</html>

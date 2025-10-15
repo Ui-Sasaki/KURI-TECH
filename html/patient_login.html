@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../images/logo.png">
+  <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+  <title>KURI⭐︎TECH | Patients Portal | Login</title>
+  <link rel="stylesheet" href="../css/patient_login.css">
+</head>
+<body> 
+  <div class="home-link">
+    <a href="index_en.html" class="btn home-btn">Home</a>
+  </div>
+  <div class="lang-switch">
+    <a href="patient_login.html" class="lang-btn">English</a>
+    <a href="patient_login_jp.html" class="lang-btn">日本語</a>
+  </div>
+
+  <div class="container">
+    <h1>Patient Login</h1>
+    <form class="login-form">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit" class="btn login-btn">Login</button>
+    </form>
+    <a href="../html/patient_signin.html" class="btn signin-btn">Or Sign In</a>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+    import { getFirestore, getDoc, doc } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBBFtkw6ZUj8AvMHgwKSh2MyDhrAPtJIHk",
+      authDomain: "kuri-tech.firebaseapp.com",
+      projectId: "kuri-tech",
+      storageBucket: "kuri-tech.firebasestorage.app",
+      messagingSenderId: "1084570791787",
+      appId: "1:1084570791787:web:7bd34da963f12ae69b662e",
+      measurementId: "G-F68BPB6943"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    document.querySelector(".login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        const snap = await getDoc(doc(db, "patients", user.uid));
+        if (!snap.exists() || snap.data().role !== "patient") {
+          await signOut(auth);
+          alert("You are not authorized for the Patient Portal.");
+          return;
+        }
+
+        alert("Login successful!");
+        window.location.href = "../html/patient_dashboard.html";
+      } catch (err) {
+        alert("Login failed: " + err.message);
+      }
+    });
+  </script>
+</body>
+</html>
